@@ -1,0 +1,22 @@
+@using Microsoft.AspNetCore.Identity
+@using AutoEstate.Data.Entities
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if(SignInManager.IsSignedIn(User))
+{
+    <div class="button navbar-right">
+        <form asp-action="post">
+            <button class="navbar-btn nav-button wow bounceInRight login" asp-controller="Accounts" asp-action="Logout" data-wow-delay="0.4s">Logout</button>
+        </form>
+    </div>
+}
+else
+{
+    <div class="button navbar-right">
+        <form action="get">
+            <button class="navbar-btn nav-button wow bounceInRight login" asp-controller="Accounts" asp-action="Login" data-wow-delay="0.4s">Login</button>
+            <button class="navbar-btn nav-button wow fadeInRight" asp-controller="Accounts" asp-action="Register" data-wow-delay="0.5s">Register</button>
+        </form>
+    </div>
+}
